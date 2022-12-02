@@ -16,51 +16,45 @@ import { input } from "./day2.data";
 // 3 - draws
 // 6 - win
 
-const enum TheirPlay {
+export const enum TheirPlay {
   A = "A",  // Rock
   B = "B", // Paper
   C = "C" // Scissors
 };
 
-const enum YourResponse {
+export const enum YourResponse {
   X = "X", // "Rock"
   Y = "Y", // "Paper"
   Z = "Z" // Scissors
 }
 
-function valueForEnum(yourResponse: YourResponse) {
-  switch(yourResponse) {
-    case YourResponse.X:
-      return {
-        name: 'Rock',
-        points: 1,
-        beats: TheirPlay.C,
-        draw: TheirPlay.A,
-        loose: TheirPlay.B
-      };
-    case YourResponse.Y:
-      return {
-        name: 'Paper',
-        points: 2,
-        beats: TheirPlay.A,
-        draw: TheirPlay.B,
-        loose: TheirPlay.C
-      };
-    case YourResponse.Z:
-      return {
-        name: 'Scissors',
-        points: 3,
-        beats: TheirPlay.B,
-        draw: TheirPlay.C,
-        loose: TheirPlay.A 
-      };
-    default:
-      throw Error('not one of the enums');
+export const valueForYourResponse = {
+  "X": {
+    name: 'Rock',
+    points: 1,
+    beats: TheirPlay.C,
+    draw: TheirPlay.A,
+    loose: TheirPlay.B
+  },
+  "Y": {
+    name: 'Paper',
+    points: 2,
+    beats: TheirPlay.A,
+    draw: TheirPlay.B,
+    loose: TheirPlay.C
+  },
+  "Z": {
+    name: 'Scissors',
+    points: 3,
+    beats: TheirPlay.B,
+    draw: TheirPlay.C,
+    loose: TheirPlay.A 
   }
 }
 
+
 export function scoreRound(them: TheirPlay, you: YourResponse): number {
-  const valueOfRound = valueForEnum((you));
+  const valueOfRound = valueForYourResponse[you];
   let handPoint: number = valueOfRound.points;
 
   let roundScore = 0;
