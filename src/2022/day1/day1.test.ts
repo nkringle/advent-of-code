@@ -1,6 +1,5 @@
 import { logAnswer } from '../../utils/logging';
-import {calculateCaloriesForElf, calculateTopCalsElf, day1, day1Part1, day1Part2, findTop3Elves} from "./day1";
-import { data } from './day1.data';
+import {calculateCaloriesForElf, calculateTopCalsElf, day1Part1, day1Part2, findTop3Elves} from "./day1";
 
 test('Provided test cases', () => {
     expect(calculateTopCalsElf(calculateCaloriesForElf(`1000
