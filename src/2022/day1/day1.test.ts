@@ -39,9 +39,10 @@ test('All test cases', () => {
 });
 
 test('Returns an answer part 1', () => {
-    logAnswer(day1Part1());
-    expect(typeof day1()).toBe('number');
-    expect(day1()).toBeGreaterThan(0);
+    const output = day1Part1();
+    logAnswer(output);
+    expect(typeof output).toBe('number');
+    expect(output).toBeGreaterThan(0);
 });
 
 
