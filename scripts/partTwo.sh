@@ -24,7 +24,8 @@ test('Provided test cases', () => {
 });
 
 test('Returns an answer', () => {
-  logAnswer(day$1part2());
-  expect(typeof day$1part2()).toBe('number');
-  expect(day$1part2()).toBeGreaterThan(0);
+  const answer =day$1part2();
+  logAnswer(answer);
+  expect(typeof answer).toBe('number');
+  expect(answer).toBeGreaterThan(0);
 });" >> src/$YEAR/day$1/day$1.part2.test.ts

@@ -32,9 +32,10 @@ test('Provided test cases', () => {
 });
 
 test('Returns an answer', () => {
-  logAnswer(day$1());
-  expect(typeof day$1()).toBe('number');
-  expect(day$1()).toBeGreaterThan(0);
+  const answer = day$1();
+  logAnswer(answer);
+  expect(typeof answer).toBe('number');
+  expect(answer).toBeGreaterThan(0);
 });" >> src/$YEAR/day$1/day$1.test.ts
 
 echo "import { parseInput } from '../../utils/input';
