@@ -13,6 +13,7 @@ export function singleBackpackSides(singleBackpack: string): string[] {
   return [ singleBackpack.slice(0, midpoint), singleBackpack.slice(midpoint, singleBackpack.length)];
 }
 
+
 export function backpackSharedItems(singleBackpack: string): string[] {
   const sides = singleBackpackSides(singleBackpack);
   const side1 = Array.from(sides[0]).sort();

@@ -1,24 +1,49 @@
-import { day3part2 } from './day3.part2';
+import { breakIntoGroups, day3part2, findSimilarItems, scoreGroups } from './day3.part2';
 import { logAnswer } from '../../utils/logging';
 
 test('Provided test cases', () => {
-  expect(day3part2()).toBe(3);
+  expect(findSimilarItems(['vJrwpWtwJgWrhcsFMMfFFhFp',
+  'jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL',
+  'PmmdzqPrVvPwwTWBwg'])).toBe('r');
+  expect(findSimilarItems(['wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn',
+    'ttgJtRGJQctTZtZT',
+    'CrZsJsPPZsGzwwsLwLmpwMDw'])).toBe('Z');
+});
+
+test('break into groups', () => {
+  const groups = breakIntoGroups(`vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw`);
+
+expect(groups.length).toBe(2);
+});
+
+
+
+test('score groups', () => {
+  expect(scoreGroups(`vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg`)).toBe(18);
+  expect(scoreGroups(`wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw`)).toBe(52);
+
+
+  expect(scoreGroups(`vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw`)).toBe(70);
 });
 
 test('Returns an answer', () => {
-  logAnswer(day3part2());
-  expect(typeof day3part2()).toBe('number');
-  expect(day3part2()).toBeGreaterThan(0);
-});
-import { day3part2 } from './day3.part2';
-import { logAnswer } from '../../utils/logging';
-
-test('Provided test cases', () => {
-  expect(day3part2()).toBe(3);
-});
-
-test('Returns an answer', () => {
-  logAnswer(day3part2());
-  expect(typeof day3part2()).toBe('number');
-  expect(day3part2()).toBeGreaterThan(0);
+  const answer = day3part2();
+  
+  logAnswer(answer);
+  expect(typeof answer).toBe('number');
+  expect(answer).toBeGreaterThan(0);
 });
