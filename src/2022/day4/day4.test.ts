@@ -6,7 +6,8 @@ test('Provided test cases', () => {
 });
 
 test('Returns an answer', () => {
-  logAnswer(day4());
-  expect(typeof day4()).toBe('number');
-  expect(day4()).toBeGreaterThan(0);
+  const answer = day4();
+  logAnswer(answer);
+  expect(typeof answer).toBe('number');
+  expect(answer).toBeGreaterThan(0);
 });
