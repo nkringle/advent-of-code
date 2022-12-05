@@ -1,11 +1,11 @@
 #!/bin/bash
 
-if [$1 == ""]; then
+if [ -z $1 ]; then
   echo "You must provide a day"
   exit 1
 fi
 
-if [$2 == ""]; then
+if [ -z $2 ]; then
   echo "No year provided, defualting to current year"
   YEAR=`date +%Y`
 else
