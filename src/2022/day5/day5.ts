@@ -1,3 +1,4 @@
+import { createScanner } from "typescript";
 import { input } from "./day5.data";
 
 
@@ -8,7 +9,7 @@ export function parseCrates(inp: string): string[][] {
     .map((line) => line.trim())
     .filter((line) => line.startsWith('1'))[0];
   const columns = Number(columnsRow.split('   ').pop());
-  const crateArrangement: string[][] = Array(columns).fill([]);
+  const crateArrangement: string[][] = [];
   const crates = lines
   .filter((line) => !line.startsWith('move') && !line.startsWith(' 1') && line !== '')
   .map((line) => {
@@ -28,12 +29,12 @@ export function parseCrates(inp: string): string[][] {
     value
       .forEach((crate, column) => {
         if (crate.length > 0) {
-          console.log(JSON.stringify(
-            level,
-            column,
-            crate
-          ));
-          crateArrangement[column].push(crate);
+          if (crateArrangement[column] !== undefined){
+            crateArrangement[column].push(crate);
+          }
+          else {
+            crateArrangement[column] = [crate];
+          }
         }
       });
   });
@@ -43,15 +44,44 @@ export function parseCrates(inp: string): string[][] {
   return crateArrangement;
 }
 
-export function parseMoves(inp: string): string[] {
+export function parseMoves(inp: string): object[] {
   const instructions = inp.split('\n').filter((line) => line.startsWith('move'));
 
-  return [];
+  const output = instructions.map(instruction => {
+    const matchingRegex = /^move (\d+) from (\d+) to (\d+)/
+    
+    const outputMatches = instruction.match(matchingRegex);
+    const qty = Number(outputMatches[1]);
+    const from = Number(outputMatches[2]);
+    const to = Number(outputMatches[3]);
+
+
+    return {
+      qty,
+      from,
+      to
+    }
+  });
+
+  return output;
 }
 
 
-export function calcAnswer(inp: string): number {
-  return 0;
+export function calcAnswer(inp: string): string {
+  const crates: string[][] = parseCrates(inp);
+  const moves: object[] = parseMoves(inp);
+  
+  moves.forEach(move => {
+    for (let i = 0; i < move.qty; i++) {
+      const thisMove = String(crates[move.from - 1].pop());
+      crates[move.to - 1].push(thisMove);
+    }
+  })  
+  
+  return crates.map(column => {
+    return String(column.pop());
+  })
+  .reduce((prev, cur) => prev?.concat(cur), ""); 
 }
 
 
