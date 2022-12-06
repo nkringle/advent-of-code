@@ -1,6 +1,6 @@
 import { parseInput } from '../utils/input';
 
-const input = `142195
+export const input = `142195
 119326
 57976
 138834
