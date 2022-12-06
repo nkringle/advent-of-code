@@ -2,10 +2,17 @@ import { calcAnswer, day5, parseCrates } from './day5';
 import { logAnswer } from '../../utils/logging';
 
 test('Parse Crates', () => {
-  const crates = parseCrates(`    [D]    
+  const crates = parseCrates(`
+    [D]    
 [N] [C]    
 [Z] [M] [P]
- 1   2   3 `);
+ 1   2   3 
+
+move 1 from 2 to 1
+move 3 from 1 to 3
+move 2 from 2 to 1
+move 1 from 1 to 2`);
+  
 
   expect(crates.length).toBe(3); // columns
   expect(crates[0]).toIncludeSameMembers(['N', 'Z']);
