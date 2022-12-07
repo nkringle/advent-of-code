@@ -1,9 +1,20 @@
-import { day6 } from './day6';
+import { anyRepeats, day6, day6Answer } from './day6';
 import { logAnswer } from '../../utils/logging';
 
-test('Provided test cases', () => {
-  expect(day6()).toBe(6);
+test('four letters have a repeat', () => {
+  expect(anyRepeats('bvwb')).toBe(true);
+  expect(anyRepeats('vwbj')).toBe(false);
 });
+
+
+
+test('Provided test cases', () => {
+  expect(day6Answer('bvwbjplbgvbhsrlpgdmjqwftvncz')).toBe(5);
+  expect(day6Answer('nppdvjthqldpwncqszvftbrmjlhg')).toBe(6);
+  expect(day6Answer('nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg')).toBe(10);
+  expect(day6Answer('zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw')).toBe(11);
+});
+
 
 test('Returns an answer', () => {
   const answer = day6();
